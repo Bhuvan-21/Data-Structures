@@ -9,11 +9,13 @@ class Node
 {
 public:
 	long val;
-	Node* next;
+	Node *next;
 	
 	Node(long value)
 	{
 		val = value;
+		next = NULL;
+		
 	}
 };
 
@@ -22,31 +24,81 @@ public:
 class Queue
 {
 private:
-	Node* front,  rear;
+	int num;
+	Node *front,  *rear;
 	
 public:
 	
 	Queue()
 	{
-		front = nullptr; 
-		rear = nullptr;
+		num = 0;
+		front = NULL; 
+		rear = NULL;
 	}
 	
-	void Insert(long num)
+	void Insert(long val)
 	{
-		Node* elem = new Node(num);
-		
-		
-		
+		Node* elem = new Node(val);
+		if(num == 0)
+		{
+			front = rear = elem;
+			num++;
+			return;
+		}
+		else
+		{
+			rear->next = elem;
+			rear = elem;
+			num++;
+		}
 	}
 	
 	void Delete()
 	{
-		
+		if(num == 0)
+		{
+			cout<<"Empty Queue\n";
+			return;
+		}
+		else
+		{
+			if(num == 1)
+			{
+				Node* ptr = front;
+				front = rear = NULL;
+				delete(ptr);
+				num--;
+				return;
+			}
+			else
+			{
+				Node* ptr = front;
+				front = front->next;
+				delete(ptr);
+				num--;
+				return;
+			}
+		}
 	}
 	
 	void Show()
 	{
+		if(num == 0)
+		{
+			cout<<"Empty Queue\n";
+			return;
+		}	
+		else
+		{
+			Node* ptr = front;
+			cout<<"Queue: ";
+			for(int i = 0; i < num; i++)
+			{
+				cout<<ptr->val<<" ";
+				ptr = ptr->next;
+			}
+			cout<<endl;
+		}
 		
 	}
 	
