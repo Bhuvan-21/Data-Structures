@@ -12,3 +12,7 @@
   
   #Queue : Using Array and Linked List
   
+  #Deque
+  
+  #Min Priority Queue
+  
