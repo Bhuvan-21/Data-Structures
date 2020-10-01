@@ -14,5 +14,7 @@
   
   #Deque
   
-  #Min Priority Queue
+  #Min Priority Queue 
+  
+  #Min Priority Stack
   
