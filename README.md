@@ -18,3 +18,5 @@
   
   #Min Priority Stack
   
+  #Tree (BFS, DFS included)
+  
