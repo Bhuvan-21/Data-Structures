@@ -67,7 +67,7 @@ public:
         }
     }
 
-    void Traversal()
+    void BFS_Traversal()
     {
         if(root == NULL)
         {
@@ -98,6 +98,37 @@ public:
         return;
     }
 
+    void DFS_Traversal()
+    {
+        if(root == NULL)
+        {
+            cout<<"Empty Tree\n";
+            return;
+        }
+        
+        Node* ptr;
+        stack<Node*> s;
+        s.push(root);
+        
+        cout<<"Tree: ";
+        while(!s.empty())
+        {
+            ptr = s.top();
+            s.pop();
+            cout<<ptr->val<<" ";
+            if(ptr->right != NULL)
+            {
+                s.push(ptr->right);
+            }
+            if(ptr->left != NULL)
+            {
+                s.push(ptr->left);
+            }
+        }
+        cout<<endl;
+        return;
+    }
+
     void Delete(int v)
     {
         Node *ptr1, *ptr2; 
@@ -120,7 +151,6 @@ public:
                 ptr2 = ptr1;
             }
         }
-        //cout<<"*"<<ptr1<<endl;
         ptr2->val = ptr1->val;
         Node* ptr = ptr1;
         q.push(root);
@@ -135,16 +165,13 @@ public:
             q.pop();
             
             if(ptr1->left == ptr)
-            {
-            	//cout<<"#"<<ptr1->left<<endl;
-            	
+            {	
                 delete(ptr);
                 ptr1->left = NULL;
                 return;
             }
             if(ptr1->right == ptr)
             {
-            	//cout<<"#"<<ptr1->right<<endl;
                 delete(ptr);
                 ptr1->right = NULL;
                 return;
@@ -174,7 +201,7 @@ int main()
 
     do
 	{
-		cout<<"1. Insert 2. Delete 3. In-order Traversal 4. Exit Enter choice:";
+		cout<<"1. Insert 2. Delete 3. BFS 4. DFS 5. Exit Enter choice:";
 		cin>>ch;
 		switch(ch)
 		{
@@ -194,10 +221,15 @@ int main()
 			}
 			case 3:
 			{
-				tree.Traversal();
+				tree.BFS_Traversal();
 				break;
 			}
-			case 4:
+            case 4:
+            {
+                tree.DFS_Traversal();
+                break;
+            }
+			case 5:
 			{
 				cout<<"Exiting\n";
 				break;
@@ -209,7 +241,7 @@ int main()
 			}
 		}
 	
-	}	while(ch != 4);
+	}	while(ch != 5);
     
 
 
