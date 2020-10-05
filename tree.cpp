@@ -98,6 +98,56 @@ public:
         return;
     }
 
+    void display(Node* ptr, int ch)
+    {
+        if(ptr != NULL)
+        {
+            switch (ch)
+            {
+                case -1:
+                {
+                    display(ptr->left, ch);
+                    cout<<ptr->val<<" ";
+                    display(ptr->right, ch);
+                    break;
+                }
+                case 0:
+                {
+                    cout<<ptr->val<<" ";
+                    display(ptr->left, ch);
+                    display(ptr->right, ch);
+                    break;
+                }
+                case 1:
+                {
+                    display(ptr->right, ch);
+                    cout<<ptr->val<<" ";
+                    display(ptr->left, ch);
+                    break;
+                }
+                default:
+                    cout<<"Invaid input\n";
+            }
+        }
+    }
+
+    void DFS_2(int ch)
+    {
+        if(root == NULL)
+        {
+            cout<<"Empty tree\n";
+            return;
+        }
+        else
+        {
+            cout<<"Tree: ";
+            display(root, ch);
+            cout<<"\n";
+        }
+        
+    }
+
+
     void DFS_Traversal()
     {
         if(root == NULL)
@@ -226,7 +276,10 @@ int main()
 			}
             case 4:
             {
-                tree.DFS_Traversal();
+                int ord;
+                cout<<"-1: Pre-order traversal 0: In-order traversal 1: Post-order traversal \nEnter choice: ";
+                cin>>ord;
+                tree.DFS_2(ord);
                 break;
             }
 			case 5:
