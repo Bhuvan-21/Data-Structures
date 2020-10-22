@@ -18,7 +18,16 @@ public:
     {   
         arr[num++] = x;
         //cout<<"inserted"<<x<<endl;
+        int i = num-1;
+        while(Max_Heapify(parent(i)))
+        {
+            i = parent(i);
+        }
+        Display();
+        
     }
+    
+    
 
     int get_size()
     {
@@ -37,7 +46,7 @@ public:
         Max_Heapify(0);
     }
 
-    void Max_Heapify(int i)
+    bool Max_Heapify(int i)
     {
         int l = left(i), r = right(i);
         int largest = i;
@@ -56,7 +65,9 @@ public:
             arr[i] = arr[largest];
             arr[largest] = temp;
             Max_Heapify(largest);
+            return true;
         }
+        return false;
     }
 
 	void Display()
@@ -79,12 +90,17 @@ public:
 
     int left(int x)
     {
-        return 2*x + 1;
+        return 2*x+1;
     }
 
     int right(int x)
     {
         return 2*x+2;
+    }
+
+    int parent(int i)
+    {
+        return (i-1)/2;
     }
 
 
@@ -119,7 +135,7 @@ int main()
     h.Insert(-12);
     h.Insert(39);
     
-    Build_Max_Heap(h);
+    //Build_Max_Heap(h);
     h.Heap_Sort();
 
 
