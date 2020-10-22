@@ -18,5 +18,8 @@
   
   #Min Priority Stack
   
+  #Max Heap
+  
   #Tree (BFS, DFS included)
   
+  #Graph (BFS, DFS included)
