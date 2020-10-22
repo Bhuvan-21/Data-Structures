@@ -1,8 +1,6 @@
 # Data-Structures
 
 /* This is where I keep code for data structures */
-
-#Linear Data structures
     
   #Array
   
