@@ -23,7 +23,7 @@ public:
         {
             i = parent(i);
         }
-        Display();
+        
         
     }
     
